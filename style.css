@@ -1,0 +1,50 @@
+*{
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: rgb(189, 189, 189);
+}
+h1{
+    text-align: center;
+    margin: 1em;
+}
+#main_div{
+    margin-top: 2em;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+#article{
+    width: 420px;
+    height: 27em;
+    position: relative;
+    align-items: center;
+    background-color: aqua;
+}
+#textdiv{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.link-button{
+    background-color: rgb(0, 90, 90);
+    border: none;
+    color: white;
+}
+.link-button:hover{
+    background-color: aqua;
+    color: rgb(2, 138, 138);
+}
+img{
+    width: 420px;
+    height: 250px;
+    align-items: center;
+}
+h3{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background-color: aqua;
+}
