@@ -22,6 +22,7 @@ h1{
     position: relative;
     align-items: center;
     background-color: aqua;
+    border-radius: 20px;
 }
 #textdiv{
     display: flex;

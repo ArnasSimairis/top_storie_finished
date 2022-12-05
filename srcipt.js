@@ -4,11 +4,23 @@ const section_buttons = document.querySelector('header');
 
 
 const all_items = async () => {
-  try {
-      const stories = await fetch("https://api.nytimes.com/svc/topstories/v2/arts.json?api-key=G6UAg1ph0qbH6GLpPHKtqGiuzwIM7eIm")
+  try {const stories = await fetch("https://api.nytimes.com/svc/topstories/v2/arts.json?api-key=G6UAg1ph0qbH6GLpPHKtqGiuzwIM7eIm")
       const top_stories = await stories.json();
       const results = top_stories.results;
       console.log(results)
+
+
+      const newarr = []
+      // for (let d in results){
+
+      
+      // if (!newarr.includes(results.section)) {
+      //   newarr.push(results.section)
+      // }
+      // else {
+      //   console.log('could not map')
+      // }
+    // }
 
       if(k > 0){
           let j = k
@@ -20,7 +32,7 @@ const all_items = async () => {
       let h = 0
 
       for (let z in results){
-          if(h < 30){
+          if(h < 40){
               const article = document.createElement('div');
               article.setAttribute('id', 'article');
               mainDiv.appendChild(article);
@@ -60,15 +72,44 @@ const all_items = async () => {
               continue
           }
           
+
+          if (!newarr.includes(results[z].section)) {
+            newarr.push(results[z].section)
+          }
+          // else {
+          //   console.log('could not map')
+          // }
       }
       //==================================================================================
-      console.log(results);
+      console.log(newarr);
+      // for (let m in results){
+        newarr.forEach(section => {
+          const menu_button = document.createElement('button');
+          menu_button.classList.add("filter");
+          // for (let m in newarr){
+            menu_button.innerText = section;
+          // };
+          section_buttons.appendChild(menu_button);
+        })
+      // };
+      const my_button = document.getElementsByClassName('filter')
+      const card_genre = document.getElementsByTagName('h3');
 
-      results.forEach(section => {
-        const menu_button =document.createElement('button');
-        menu_button.innerText = results.section;
-        section_buttons.appendChild(menu_button);
-      });
+
+      for(let one_category of my_button){
+        one_category.addEventListener('click', () => {getCategory(one_category.innerText)})
+      }
+      const getCategory = (section) => {
+        for (let item of card_genre){
+          if(item.innerText === section || section === 'all'){
+            item.parentElement.parentElement.style.display = 'block';
+          }
+          else{
+            item.parentElement.parentElement.style.display = 'none'
+          }
+        }
+      }
+
       //==================================================================================
   } catch(error){
       console.log(error)
